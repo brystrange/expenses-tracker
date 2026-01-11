@@ -1,0 +1,105 @@
+/* Bills Page Styles */
+
+.bills-container {
+    display: flex;
+    min-height: 100vh;
+    background: #f5f7fa;
+}
+
+.bills-page {
+    flex: 1;
+    margin-left: 72px;
+    min-height: 100vh;
+    background: #f5f7fa;
+}
+
+/* Header */
+.bills-header {
+    padding: 2rem 2.5rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.bills-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 0;
+}
+
+.bills-subtitle {
+    color: #7b8794;
+    margin: 0.25rem 0 0;
+    font-size: 0.9375rem;
+}
+
+/* Content */
+.bills-content {
+    padding: 0 2.5rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Coming Soon Card */
+.coming-soon-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.coming-soon-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, #011638 0%, #2e294e 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coming-soon-icon svg {
+    width: 40px;
+    height: 40px;
+    stroke: white;
+}
+
+.coming-soon-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 0 0 0.75rem;
+}
+
+.coming-soon-card p {
+    color: #7b8794;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.coming-soon-card .hint {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #a0aab4;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .bills-page {
+        margin-left: 0;
+    }
+
+    .bills-header {
+        padding: 4.5rem 1.25rem 1rem;
+    }
+
+    .bills-content {
+        padding: 0 1.25rem 2rem;
+    }
+
+    .coming-soon-card {
+        padding: 2rem 1.5rem;
+    }
+}

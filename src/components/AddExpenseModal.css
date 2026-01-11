@@ -1,0 +1,126 @@
+/* Add Expense Modal Styles - Professional Light Theme */
+
+.expense-modal {
+    max-width: 500px;
+}
+
+.close-btn {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-muted);
+}
+
+.close-btn:hover {
+    color: var(--color-text-primary);
+}
+
+/* Amount Input */
+.amount-group {
+    margin-bottom: var(--spacing-xl);
+}
+
+.amount-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.amount-input {
+    padding-left: 2.5rem;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    text-align: left;
+    background: var(--color-bg-tertiary);
+}
+
+.amount-input:focus {
+    background: var(--color-bg-secondary);
+}
+
+.amount-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+/* Remove number input spinners */
+.amount-input::-webkit-outer-spin-button,
+.amount-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.amount-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Category Grid */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.category-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    background: var(--color-bg-tertiary);
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.category-btn:hover {
+    background: var(--color-bg-primary);
+    border-color: var(--color-border);
+}
+
+.category-btn.active {
+    background: color-mix(in srgb, var(--category-color) 15%, white);
+    border-color: var(--category-color);
+}
+
+.category-icon {
+    font-size: 1.5rem;
+}
+
+.category-name {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.category-btn.active .category-name {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Date Input */
+input[type="date"] {
+    color-scheme: light;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+/* Modal Footer */
+.expense-modal .modal-footer {
+    border-top: none;
+    padding-top: 0;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .category-icon {
+        font-size: 1.25rem;
+    }
+}
