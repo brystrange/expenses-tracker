@@ -88,10 +88,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             id: firebaseUser.uid,
             email: firebaseUser.email || '',
             displayName: firebaseUser.displayName || 'User',
-            photoURL: firebaseUser.photoURL || undefined,
             settings: DEFAULT_SETTINGS,
             createdAt: new Date(),
         };
+
+        // Only include photoURL if it exists (Firestore doesn't accept undefined)
+        if (firebaseUser.photoURL) {
+            newProfile.photoURL = firebaseUser.photoURL;
+        }
 
         await setDoc(userRef, newProfile);
         return newProfile;
