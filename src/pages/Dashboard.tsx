@@ -11,7 +11,7 @@ import {
     getCurrentPeriod,
 } from '../utils/helpers';
 import { CYCLE_INFO } from '../types';
-import type { Expense, Bill, CategoryBudget } from '../types';
+import type { Expense, CategoryBudget } from '../types';
 import AddExpenseModal from '../components/AddExpenseModal';
 import Sidebar from '../components/Sidebar';
 import './Dashboard.css';
@@ -63,12 +63,7 @@ const PlusIcon = () => (
     </svg>
 );
 
-const ClockIcon = () => (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-    </svg>
-);
+
 
 // Icon components for categories - uses icon ID (bolt, car, utensils, etc.)
 const getIcon = (iconId: string) => {
@@ -241,7 +236,7 @@ const getCategoryIcon = (category: string) => {
 const Dashboard: React.FC = () => {
     const navigate = useNavigate();
     const { userProfile } = useAuth();
-    const { expenses, currentBudget, bills, loading, getCategorySpending, getTotalExpenses, getTotalBills } = useExpenses();
+    const { expenses, currentBudget, loading, getCategorySpending, getTotalExpenses, getTotalBills } = useExpenses();
     const [showAddExpense, setShowAddExpense] = useState(false);
 
     // Get cycle info for display

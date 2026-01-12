@@ -254,7 +254,7 @@ const Settings: React.FC = () => {
 
     // Unsaved changes state
     const [showDiscardModal, setShowDiscardModal] = useState(false);
-    const [pendingNavigationPath, setPendingNavigationPath] = useState<string | null>(null);
+    const [pendingNavigationPath, _setPendingNavigationPath] = useState<string | null>(null);
 
     // Check if there are unsaved changes
     const hasUnsavedChanges = useCallback(() => {

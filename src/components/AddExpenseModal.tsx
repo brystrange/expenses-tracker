@@ -112,8 +112,7 @@ const AddExpenseModal: React.FC<AddExpenseModalProps> = ({ onClose, initialData,
 
     const isEditing = !!initialData?.id;
 
-    // Get selected category object
-    const selectedCategory = fixedCategory || userCategories.find(c => c.name === category);
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

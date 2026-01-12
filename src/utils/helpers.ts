@@ -234,7 +234,8 @@ export const getWeeklyComparison = (expenses: Expense[]): WeeklyComparison => {
         const byCategory: Partial<Record<ExpenseCategory, number>> = {};
 
         weekExpenses.forEach(expense => {
-            byCategory[expense.category] = (byCategory[expense.category] || 0) + expense.amount;
+            const cat = expense.category as ExpenseCategory;
+            byCategory[cat] = (byCategory[cat] || 0) + expense.amount;
         });
 
         return {
