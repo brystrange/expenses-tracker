@@ -15,6 +15,7 @@ import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { auth, googleProvider, db } from '../services/firebase';
 import type { UserProfile, UserSettings } from '../types';
 import { DEFAULT_SETTINGS } from '../types';
+import { getAuthErrorMessage, getFirestoreErrorMessage } from '../utils/errorMessages';
 
 interface AuthContextType {
     user: User | null;
@@ -106,7 +107,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             setError(null);
             await signInWithEmailAndPassword(auth, email, password);
         } catch (err: unknown) {
-            const errorMessage = err instanceof Error ? err.message : 'Failed to sign in';
+            const errorMessage = getAuthErrorMessage(err);
             setError(errorMessage);
             throw err;
         }
@@ -118,7 +119,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             const result = await createUserWithEmailAndPassword(auth, email, password);
             await updateProfile(result.user, { displayName });
         } catch (err: unknown) {
-            const errorMessage = err instanceof Error ? err.message : 'Failed to create account';
+            const errorMessage = getAuthErrorMessage(err);
             setError(errorMessage);
             throw err;
         }
@@ -129,7 +130,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             setError(null);
             await signInWithPopup(auth, googleProvider);
         } catch (err: unknown) {
-            const errorMessage = err instanceof Error ? err.message : 'Failed to sign in with Google';
+            const errorMessage = getAuthErrorMessage(err);
             setError(errorMessage);
             throw err;
         }
@@ -139,7 +140,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         try {
             await signOut(auth);
         } catch (err: unknown) {
-            const errorMessage = err instanceof Error ? err.message : 'Failed to sign out';
+            const errorMessage = getAuthErrorMessage(err);
             setError(errorMessage);
             throw err;
         }
@@ -153,7 +154,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             await setDoc(userRef, updates, { merge: true });
             setUserProfile(prev => prev ? { ...prev, ...updates } : null);
         } catch (err: unknown) {
-            const errorMessage = err instanceof Error ? err.message : 'Failed to update profile';
+            const errorMessage = getFirestoreErrorMessage(err);
             setError(errorMessage);
             throw err;
         }
@@ -168,7 +169,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             await setDoc(userRef, { settings: newSettings }, { merge: true });
             setUserProfile(prev => prev ? { ...prev, settings: newSettings } : null);
         } catch (err: unknown) {
-            const errorMessage = err instanceof Error ? err.message : 'Failed to update settings';
+            const errorMessage = getFirestoreErrorMessage(err);
             setError(errorMessage);
             throw err;
         }
